@@ -22,8 +22,8 @@ jobs:
         protocol: ftps
         port: ${{ secrets.PORT }}
         exclude: |
-          ** /.git*
-          ** /.git*/ **
-          ** /vendor/ **
-          ** composer.phar **
-          ** LocalSettings.php **
+          **/.git*
+          **/.git*/**
+          **/vendor/**
+          **composer.phar*
+          **LocalSettings.php*
