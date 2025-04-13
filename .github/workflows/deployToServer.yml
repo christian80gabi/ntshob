@@ -1,0 +1,29 @@
+name: DeployToInfinityFree
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Get latest code
+      uses: actions/checkout@v4.2.2
+
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.serverhost }}
+        username: ${{ secrets.username }}
+        password: ${{ secrets.password }}
+        server-dir: /htdocs/
+        protocol: ftps
+        port: 21
+        exclude: |
+          ** /.git*
+          ** /.git*/ **
+          ** /vendor/ **
+          ** composer.phar **
+          ** LocalSettings.php **
