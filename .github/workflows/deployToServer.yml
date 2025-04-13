@@ -15,12 +15,12 @@ jobs:
     - name: Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
-        server: ftpupload.net  # ${{ secrets.SERVERHOST }}
+        server: ${{ secrets.FTP_HOSTNAME }}
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         server-dir: /htdocs/
-        protocol: ftp
-        port: 21
+        protocol: ftps
+        port: ${{ secrets.PORT }}
         exclude: |
           ** /.git*
           ** /.git*/ **
