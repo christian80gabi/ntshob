@@ -1,24 +1,22 @@
-name: DeployToInfinityFree
-
 on:
   push:
     branches: [ dev ]
 
+name: 🚀 Deploy website on push
 jobs:
   web-deploy:
-    name: Deploy
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: Get latest code
-      uses: actions/checkout@v4.2.2
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v4
 
-    - name: Sync files
+    - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_HOSTNAME }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: ${{ secrets.FTP_DIRECTORY }}
         protocol: ftps
         port: ${{ secrets.FTP_PORT }}
         exclude: |
