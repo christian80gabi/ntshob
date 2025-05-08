@@ -2,7 +2,7 @@ name: DeployToInfinityFree
 
 on:
   push:
-    branches: [ main ]
+    branches: [ dev ]
 
 jobs:
   web-deploy:
@@ -16,11 +16,11 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: ${{ secrets.FTP_HOSTNAME }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        server-dir: /htdocs/
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ${{ secrets.FTP_DIRECTORY }}
         protocol: ftps
-        port: ${{ secrets.PORT }}
+        port: ${{ secrets.FTP_PORT }}
         exclude: |
           **/.git*
           **/.git*/**
