@@ -19,6 +19,7 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         protocol: ftps
         port: ${{ secrets.FTP_PORT }}
+        server-dir: ${{ secrets.FTP_DIRECTORY }}
         exclude: |
           **/.git*
           **/.git*/**
