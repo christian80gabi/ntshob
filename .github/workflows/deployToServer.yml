@@ -17,12 +17,16 @@ jobs:
         server: ${{ secrets.FTP_HOSTNAME }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        protocol: ftps
         port: ${{ secrets.FTP_PORT }}
         server-dir: ${{ secrets.FTP_DIRECTORY }}
+        state-name: .ftp-deploy-sync-state.json
+        protocol: ftps
         exclude: |
           **/.git*
           **/.git*/**
           **/vendor/**
           **composer.phar*
           **LocalSettings.php*
+
+    - name: Show deploy state (debug only)
+      run: cat ${{ secrets.FTP_DIRECTORY }}.ftp-deploy-sync-state.json || echo "No previous state"
